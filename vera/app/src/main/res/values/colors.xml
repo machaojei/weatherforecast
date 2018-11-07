@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="color_0088ff">#0088FF</color>
+    <color name="color_cccccc">#CCCCCC</color>
+    <color name="color_666666">#666666</color>
+    <color name="color_999999">#999999</color>
+    <color name="color_999999_10">#10999999</color>
+    <color name="color_333333">#333333</color>
+    <color name="color_FF0033">#FF0033</color>
+    <color name="color_00CC33">#00CC33</color>
+    <color name="color_FF9900">#FF9900</color>
+    <color name="color_FF0033_10">#10FF0033</color>
+    <color name="color_FF0033_90">#e6FF0033</color>
+    <color name="colorCccccc">#CCCCCC</color>
+    <color name="colorEeeeee">#EEEEEE</color>
+    <color name="colorffffff">#ffffff</color>
+    <color name="color0088FF">#0088FF</color>
+
+
+    <!--刮刮乐-->
+    <color name="holo_red_dark">#ffcc0000</color>
+    <color name="report_line_red">#D52D27</color>
+    <color name="report_line_yellow">#BA783D</color>
+    <color name="report_line_blue_1">#5893B2</color>
+    <color name="report_line_blue_2">#4CB5FF</color>
+    <color name="report_line_blue_3">#2CCFED</color>
+    <color name="report_textcolor">#333333</color>
+    <color name="report_date">#0088CC</color>
+    <color name="line_chart_bg">#666666</color>
+    <color name="report_textcolor_grey">#666666</color>
+    <color name="bg_raffle_preview">#B3000000</color>
+    <color name="coupon_valid_date">#FF666666</color>
+    <color name="coupon_invalid_date">@color/holo_red_dark</color>
+</resources>

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/rl_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background_color"
+        tools:context=".MainActivity">
+
+        <FrameLayout
+            android:id="@+id/frame_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+
+        <ImageView
+            android:id="@+id/img_left"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:layout_margin="5dp"
+            android:src="@drawable/icon_left"/>
+
+        <TextView
+            android:id="@+id/tv_city_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
+            android:text="杭州"
+            android:textColor="@color/colorffffff"/>
+
+
+        <include
+            android:id="@+id/view_alram_layout"
+            layout="@layout/weather_alram_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_city_name"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/tv_cond"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_city_name"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/colorffffff"/>
+
+
+        <TextView
+            android:id="@+id/tv_update_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/tv_city_name"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/colorffffff"/>
+
+
+        <TextView
+            android:id="@+id/tv_tmp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_cond"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/colorffffff"
+            android:textSize="60dp"/>
+
+        <TextView
+            android:id="@+id/tv_fl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_cond"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="60dp"
+            android:layout_toRightOf="@+id/tv_tmp"
+            android:textColor="@color/colorffffff"/>
+
+
+        <TextView
+            android:id="@+id/tv_sun_sr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_fl"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/tv_tmp"
+            android:textColor="@color/colorffffff"/>
+
+        <TextView
+            android:id="@+id/tv_sun_ss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_sun_sr"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/tv_tmp"
+            android:textColor="@color/colorffffff"/>
+
+
+        <TextView
+            android:id="@+id/tv_air_q"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_below="@+id/tv_tmp"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/drawable_round_10_bg"
+            android:gravity="center"
+            android:textSize="14dp"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_cond"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/tv_tmp"
+            android:text="o"
+            android:textColor="@color/colorffffff"
+            android:textSize="30dp"/>
+
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_air_q"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <include layout="@layout/weather_forecast_3_10_day"/>
+
+                <include layout="@layout/wind_hum_layout"/>
+
+                <include layout="@layout/air_quility_layout"/>
+
+                <include layout="@layout/weather_life_layout"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/scrollView"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:text="数据来源　和风天气"
+                    android:textColor="@color/colorEeeeee"/>
+            </LinearLayout>
+
+        </ScrollView>
+
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/fast_navigation_layout"
+        android:layout_width="200dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        android:orientation="horizontal"
+        android:visibility="gone"/>
+</FrameLayout>

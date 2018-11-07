@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="68dp">
+
+    <ImageView
+        android:id="@+id/image_life_style"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"/>
+
+
+    <TextView
+        android:id="@+id/tv_life_style_brf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/image_life_style"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/colorffffff"
+        android:gravity="center"
+        android:textSize="16dp"/>
+
+
+    <TextView
+        android:id="@+id/tv_life_style_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/image_life_style"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_below="@+id/tv_life_style_brf"
+        android:layout_centerVertical="true"
+        android:textColor="@color/colorEeeeee"
+        android:gravity="left"
+        android:textSize="13dp"/>
+
+</RelativeLayout>

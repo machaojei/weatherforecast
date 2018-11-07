@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/item_city_layout"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_height="48dp">
+
+
+    <TextView
+        android:id="@+id/tv_cityname"
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:textColor="@color/color_333333"
+        android:gravity="bottom"
+        android:textSize="18sp"
+        tools:text="54545545455445"/>
+
+
+    <TextView
+        android:id="@+id/tv_provincename"
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@+id/tv_cityname"
+        android:textColor="@color/color_666666"
+        android:gravity="bottom"
+        android:textSize="16sp"
+        tools:text="5454554445"/>
+
+</RelativeLayout>

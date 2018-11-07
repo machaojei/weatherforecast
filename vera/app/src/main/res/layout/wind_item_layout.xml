@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorffffff"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="风和湿度"
+        android:layout_centerHorizontal="true"
+        android:textSize="15dp"/>
+
+
+    <LinearLayout
+        android:id="@+id/wind_dir_linear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:layout_below="@+id/title"
+        android:layout_marginLeft="20dp">
+
+        <TextView
+            android:id="@+id/tv_wind_dir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorffffff"
+            android:text="风向"/>
+
+        <TextView
+            android:id="@+id/tv_wind_dir_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_toRightOf="@+id/tv_wind_dir"
+            android:textColor="@color/colorffffff"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/wind_sc_linear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/wind_dir_linear"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="20dp">
+
+        <TextView
+            android:id="@+id/tv_wind_sc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorffffff"
+            android:text="风力"/>
+
+        <TextView
+            android:id="@+id/tv_wind_sc_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:textColor="@color/colorffffff"
+            android:layout_toRightOf="@+id/tv_wind_sc"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/wind_sc_linear">
+
+        <TextView
+            android:id="@+id/tv_hum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorffffff"
+            android:text="湿度"/>
+
+
+        <TextView
+            android:id="@+id/tv_hum_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_toRightOf="@+id/tv_hum"
+            android:textColor="@color/colorffffff"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

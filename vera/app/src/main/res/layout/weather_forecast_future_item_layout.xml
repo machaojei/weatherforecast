@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+    android:layout_marginLeft="60dp">
+
+    <!--android:textColor="@color/colorffffff"-->
+
+    <TextView
+        android:id="@+id/tv_tmp_max"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorffffff"/>
+
+    <TextView
+        android:id="@+id/tv_tmp_min"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_tmp_max"
+        android:textColor="@color/colorffffff"
+        android:layout_marginTop="20dp"
+        />
+
+
+    <TextView
+        android:id="@+id/tv_week"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_tmp_min"
+        android:textColor="@color/colorffffff"
+        android:layout_marginTop="20dp"
+        />
+
+
+    <ImageView
+        android:id="@+id/image_weather_cond"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/tv_week"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/tv_day_weather_cond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/image_weather_cond"
+        android:textColor="@color/colorffffff"
+        android:layout_marginTop="20dp"
+        />
+
+
+</RelativeLayout>
