@@ -61,7 +61,6 @@ class MainActivity : AppCompatActivity(), IWeatherNowResult, IWeatherLifeStyle, 
         gestureDetector = GestureDetector(this,this)
         HeConfig.init(UserInfo.USER_ID, UserInfo.USER_KEY)
         HeConfig.switchToFreeServerNode()
-        refreshData()
     }
 
     fun refreshData() {
