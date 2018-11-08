@@ -13,7 +13,7 @@ android:            # 配置信息
     - extra-android-support          # Support Library
 
 before_install:
-
+ - cd weatherforecast/vera
  - chmod +x gradlew  # 改变gradlew的访问权限
 
 script:              # 执行:下面的命令
