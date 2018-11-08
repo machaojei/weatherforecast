@@ -8,17 +8,16 @@ sudo: false         # 开启基于容器的Travis CI任务，让编译效率更�
 android:            # 配置信息
   components:
     - tools
-    - build-tools-27.1.1
     - android-28
     - extra-android-m2repository     # Android Support Repository
     - extra-android-support          # Support Library
 
 before_install:
- - cd vera
+
  - chmod +x gradlew  # 改变gradlew的访问权限
 
 script:              # 执行:下面的命令
-  - cd vera
+
   - ./gradlew assembleRelease
 
 branches:
