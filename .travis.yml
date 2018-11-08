@@ -38,4 +38,4 @@ deploy:              # 部署
   file: vera/app/build/outputs/apk/vera.apk   # 部署文件路径
   skip_cleanup: true     # 设置为true以跳过清理,不然apk文件就会被清理
   on:     # 发布时机
-    tags: true       # tags设置为true表示只有在有tag的情况下才部署
+    tags: false       # tags设置为true表示只有在有tag的情况下才部署
