@@ -19,6 +19,11 @@ before_install:
 script:              # 执行:下面的命令
   - ./gradlew assembleRelease
 
+branches:
+  only:
+  - master
+  - /.*/
+
 before_deploy:       # 部署之前
   # 使用 mv 命令进行修改apk文件的名字
   - mv app/build/outputs/apk/vera.apk app/build/outputs/apk/vera.apk
