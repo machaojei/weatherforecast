@@ -2,10 +2,9 @@ package tools.com.vera
 
 import android.content.Intent
 import android.os.Bundle
+import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
-import android.view.GestureDetector
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.animation.AnimationUtils
 import interfaces.heweather.com.interfacesmodule.bean.air.now.AirNow
@@ -17,7 +16,6 @@ import interfaces.heweather.com.interfacesmodule.bean.weather.lifestyle.Lifestyl
 import interfaces.heweather.com.interfacesmodule.bean.weather.now.Now
 import interfaces.heweather.com.interfacesmodule.view.HeConfig
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_simple_navigation_drawer.*
 import kotlinx.android.synthetic.main.air_quility_layout.*
 import kotlinx.android.synthetic.main.loading_dialog_layout.*
 import kotlinx.android.synthetic.main.weather_forecast_3_10_day.*
@@ -45,11 +43,9 @@ import java.util.concurrent.CountDownLatch
  * 天气预报
  * */
 class MainActivity : AppCompatActivity(), IWeatherNowResult, IWeatherLifeStyle, IWeatherForecast,
-        IWeatherAirQuility, IWeatherAlarmResult,GestureDetector.OnGestureListener {
+        IWeatherAirQuility, IWeatherAlarmResult {
 
     var countDownLatch = CountDownLatch(4)
-
-    lateinit var gestureDetector : GestureDetector
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -58,9 +54,9 @@ class MainActivity : AppCompatActivity(), IWeatherNowResult, IWeatherLifeStyle, 
         showDialog()
         initLeftView()
         initEvent()
-        gestureDetector = GestureDetector(this,this)
         HeConfig.init(UserInfo.USER_ID, UserInfo.USER_KEY)
         HeConfig.switchToFreeServerNode()
+        refreshData()
     }
 
     fun refreshData() {
@@ -70,74 +66,21 @@ class MainActivity : AppCompatActivity(), IWeatherNowResult, IWeatherLifeStyle, 
         HttpWeatherAirQuility.getAirNow(this.applicationContext, this)
     }
 
-    override fun onResume() {
-        super.onResume()
-        refreshData()
-    }
 
     fun initLeftView() {
-        var view = LayoutInflater.from(this).inflate(R.layout.activity_simple_navigation_drawer, null)
-        fast_navigation_layout.addView(view)
+        setSupportActionBar(toorbar)
+        val actionBar = supportActionBar
+        actionBar!!.title = "杭州"
+        actionBar.setDisplayHomeAsUpEnabled(true)
+        var mToggle = ActionBarDrawerToggle(this, drawer, 0, 0)
+        drawer.addDrawerListener(mToggle)
+        mToggle.syncState()
         navigation_view!!.itemIconTintList = null
     }
 
 
-    override fun onTouchEvent(event: MotionEvent?): Boolean {
-        return gestureDetector.onTouchEvent(event)
-    }
-
-    override fun onShowPress(e: MotionEvent?) {
-    }
-
-    override fun onSingleTapUp(e: MotionEvent?): Boolean {
-        return false
-    }
-
-    override fun onDown(e: MotionEvent?): Boolean {
-        return false
-    }
-
-    override fun onFling(e1: MotionEvent?, e2: MotionEvent?, velocityX: Float, velocityY: Float): Boolean {
-        val minMove = 120f         //最小滑动距离
-        val minVelocity = 0f      //最小滑动速度
-        val beginX = e1!!.getX()
-        val endX = e2!!.getX()
-        val beginY = e1!!.getY()
-        val endY = e2!!.getY()
-
-        if (beginX - endX > minMove && Math.abs(velocityX) > minVelocity) {   //左滑
-            fast_navigation_layout.visibility = View.GONE
-
-        } else if (endX - beginX > minMove && Math.abs(velocityX) > minVelocity) {   //右滑
-            fast_navigation_layout.visibility = View.VISIBLE
-
-        } else if (beginY - endY > minMove && Math.abs(velocityY) > minVelocity) {   //上滑
-
-        } else if (endY - beginY > minMove && Math.abs(velocityY) > minVelocity) {   //下滑
-
-        }
-
-        return false
-    }
-
-    override fun onScroll(e1: MotionEvent?, e2: MotionEvent?, distanceX: Float, distanceY: Float): Boolean {
-        return false
-    }
-
-    override fun onLongPress(e: MotionEvent?) {
-    }
-
     fun initEvent() {
 
-//        rl_main.setOnClickListener {
-//            fast_navigation_layout.visibility = View.GONE
-//        }
-
-        img_left.setOnClickListener {
-
-            fast_navigation_layout.visibility = View.VISIBLE
-            fast_navigation_layout.animation = AnimationUtils.loadAnimation(this, R.anim.in_from_left)
-        }
 
         navigation_view.setNavigationItemSelectedListener { it ->
             when (it.getItemId()) {
@@ -181,6 +124,7 @@ class MainActivity : AppCompatActivity(), IWeatherNowResult, IWeatherLifeStyle, 
         countDownLatch.countDown()
         if (countDownLatch.count.toInt() == 0) {
             frame_layout.removeAllViews()
+            frame_layout.visibility = View.GONE
         }
     }
 
@@ -204,7 +148,9 @@ class MainActivity : AppCompatActivity(), IWeatherNowResult, IWeatherLifeStyle, 
         //　最近更新时间
         tv_update_time.text = sb.toString()
         //　城市
-        tv_city_name.text = basic!!.location
+        if (actionBar != null) {
+            actionBar!!.title = basic!!.location
+        }
         // 体感温度
         tv_fl.setText("体感温度：" + noBase.fl + "℃")
 
@@ -294,3 +240,4 @@ class MainActivity : AppCompatActivity(), IWeatherNowResult, IWeatherLifeStyle, 
 
     }
 }
+
