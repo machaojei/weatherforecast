@@ -1,9 +1,13 @@
 package tools.com.vera
 
+import android.app.Activity
 import android.content.Intent
+import android.graphics.Point
 import android.os.Bundle
+import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.animation.AnimationUtils
@@ -72,17 +76,41 @@ class MainActivity : AppCompatActivity(), IWeatherNowResult, IWeatherLifeStyle, 
         val actionBar = supportActionBar
         actionBar!!.title = "杭州"
         actionBar.setDisplayHomeAsUpEnabled(true)
-        var mToggle = ActionBarDrawerToggle(this, drawer, 0, 0)
+        var mToggle = ActionBarDrawerToggle(this, drawer,toorbar,0, 0)
         drawer.addDrawerListener(mToggle)
         mToggle.syncState()
+        setDrawerLeftEdgeSize(this,drawer)
         navigation_view!!.itemIconTintList = null
     }
 
+    fun setDrawerLeftEdgeSize ( activity : Activity,  drawerLayout : DrawerLayout) {
+        if (activity == null || drawerLayout == null)
+            return
+        try {
+            // 找到 ViewDragHelper 并设置 Accessible 为true
+            var leftDraggerField = drawerLayout.javaClass.getDeclaredField("mLeftDragger")
+            leftDraggerField.setAccessible(true)
+            var leftDragger = leftDraggerField.get(drawerLayout)
+
+            // 找到 edgeSizeField 并设置 Accessible 为true
+            var edgeSizeField = leftDragger.javaClass.getDeclaredField("mEdgeSize")
+            edgeSizeField.setAccessible(true)
+            var edgeSize = edgeSizeField.getInt(leftDragger)
+
+            // 设置新的边缘大小
+            var displaySize = Point()
+            activity.getWindowManager().getDefaultDisplay().getSize(displaySize);
+            edgeSizeField.setInt(leftDragger, Math.max(edgeSize,  (displaySize.x *
+                    1)))
+        } catch (e :Exception) {
+        }
+    }
 
     fun initEvent() {
-
-
         navigation_view.setNavigationItemSelectedListener { it ->
+
+            drawer.closeDrawer(Gravity.START)
+
             when (it.getItemId()) {
 
                 R.id.item_city -> startCityManage()
@@ -92,6 +120,7 @@ class MainActivity : AppCompatActivity(), IWeatherNowResult, IWeatherLifeStyle, 
                 R.id.item_about -> startAbout()
 
                 else -> startAbout()
+
 
             }
         }
