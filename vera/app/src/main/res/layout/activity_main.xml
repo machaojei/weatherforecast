@@ -45,15 +45,14 @@
                     <!--android:layout_margin="5dp"-->
                     <!--android:src="@drawable/icon_left"/>-->
 
-                <!--<TextView-->
-                    <!--android:id="@+id/tv_city_name"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_alignParentTop="true"-->
-                    <!--android:layout_centerInParent="true"-->
-                    <!--android:layout_margin="5dp"-->
-                    <!--android:text="杭州"-->
-                    <!--android:textColor="@color/colorffffff"/>-->
+                <TextView
+                    android:id="@+id/tv_city_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerInParent="true"
+                    android:layout_margin="5dp"
+                    android:textColor="@color/colorffffff"/>
 
 
                 <include
