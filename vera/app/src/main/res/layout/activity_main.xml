@@ -176,7 +176,7 @@
         </LinearLayout>
     </ScrollView>
 
-    <tools.com.vera.VeraDrawerLayout
+    <android.support.v4.widget.DrawerLayout
         android:id="@+id/drawer"
         android:layout_width="150dp"
         android:layout_height="match_parent"
@@ -191,5 +191,5 @@
             android:layout_gravity="start"
             android:fitsSystemWindows="true"/>
 
-    </tools.com.vera.VeraDrawerLayout>
+    </android.support.v4.widget.DrawerLayout>
 </RelativeLayout>

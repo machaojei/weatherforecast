@@ -49,7 +49,7 @@ import java.util.concurrent.CountDownLatch
 class MainActivity : AppCompatActivity(), IWeatherNowResult, IWeatherLifeStyle, IWeatherForecast,
         IWeatherAirQuility, IWeatherAlarmResult {
 
-    var countDownLatch = CountDownLatch(4)
+    var countDownLatch = CountDownLatch(3)
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -60,7 +60,6 @@ class MainActivity : AppCompatActivity(), IWeatherNowResult, IWeatherLifeStyle, 
         initEvent()
         HeConfig.init(UserInfo.USER_ID, UserInfo.USER_KEY)
         HeConfig.switchToFreeServerNode()
-        refreshData()
     }
 
     fun refreshData() {
@@ -68,6 +67,11 @@ class MainActivity : AppCompatActivity(), IWeatherNowResult, IWeatherLifeStyle, 
         HttpWeatherLifeStyle.getWeatherLifeStyle(this.applicationContext, this)
         HttpWeatherForecast.getWeatherForecast(this.applicationContext, this)
         HttpWeatherAirQuility.getAirNow(this.applicationContext, this)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        refreshData()
     }
 
 
@@ -177,6 +181,7 @@ class MainActivity : AppCompatActivity(), IWeatherNowResult, IWeatherLifeStyle, 
         //　最近更新时间
         tv_update_time.text = sb.toString()
         //　城市
+        val actionBar = supportActionBar
         if (actionBar != null) {
             actionBar!!.title = basic!!.location
         }
@@ -194,7 +199,7 @@ class MainActivity : AppCompatActivity(), IWeatherNowResult, IWeatherLifeStyle, 
      * */
     override fun weatherLifeStyleLoadSuccess(result: List<Lifestyle>?) {
         dismiss()
-
+        tv_life_layout.removeAllViews()
         for (life: LifestyleBase in result!![0].lifestyle) {
             var stringBuilder = StringBuilder()
             stringBuilder.append(HttpWeatherLifeStyle.getLifeType(life.type))
@@ -213,8 +218,7 @@ class MainActivity : AppCompatActivity(), IWeatherNowResult, IWeatherLifeStyle, 
      * */
     override fun weatherForecastLoadSuccess(result: List<Forecast>?) {
         dismiss()
-        var index = 0
-
+        tmp_linear.removeAllViews()
         if (result!![0].daily_forecast == null) {
             return
         }
@@ -243,7 +247,7 @@ class MainActivity : AppCompatActivity(), IWeatherNowResult, IWeatherLifeStyle, 
      * */
     override fun weatherAirQuilityLoadSuccess(result: List<AirNow>?) {
         dismiss()
-
+        air_linear.removeAllViews()
         var airNowCity = result!![0].air_now_city
 
         var list = arrayListOf("PM10[可吸入颗粒物]", "PM2.5[细颗粒物]", "NO2[二氧化氮]", "SO2[二氧化硫]", "CO[一氧化碳]", "O3[臭氧]")
